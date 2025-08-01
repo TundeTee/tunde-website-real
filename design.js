@@ -1,51 +1,34 @@
-// let header = document.querySelector('.menu');
-  // document.querySelector('.ri-menu-line').onclick = () => {
-  //   header.classList.toggle("active"); searchBtn.classList.remove('active');
-  //  console.log('click')
-  // }
+const wrapper = document.querySelector(".trendingwrapper");
+const box = document.querySelectorAll(".box")
 
-  // let searchBtn = document.querySelector('.input');
-  //   document.querySelector('.searching').onclick = () => {
-  //     searchBtn.classList.toggle("active"); header.classList.remove('active');
-     
+box.forEach((boxs,index)=>{
+ boxs.addEventListener("click", () => {
+  wrapper.style.transform=`translateX(${-100 * index}vw)`;
+ });
+});
 
-  //   }
- const menu = document.querySelector('.ri-menu-line')
-  const header = document.querySelector('heading')
+const wordDisplay = document.querySelector('.word-overlay');
+const originalHTML = wordDisplay.innerHTML;
 
- menu.addEventListener('click', () => {
-  header.classList.toggle('menu')
+wordDisplay.addEventListener('click', () => {
+  if (wordDisplay.innerHTML === originalHTML) {
+    wordDisplay.innerHTML = `<marquee loop="-1" scrollamount="5">Add <sup>1000</sup> to cart.... Our Odogwu</marquee>`;
+  } else {
+    wordDisplay.innerHTML = originalHTML;
+  }
+});
+
+const menu = document.querySelector('.menu');
+const nav = document.querySelector('.nav-bar');
+const cancel = document.querySelector('.cancel');
+if(menu){
+ menu.addEventListener("click",()=> {
+  nav.classList.add('active');
  });
 
-  // const signBtn = document.querySelector('.sign-again-link')
-  // const signup = document.querySelector('signup')
-
-  // signBtn.addEventListener('click', () => {
-  //   signup.classList.toggle('signing-up')
-  //   login.classList.remove('logging')
-  // });
-
- const cartBtn = document.querySelector('.cart-link')
-  const cart = document.querySelector('cart')
-
-  cartBtn.addEventListener('click', () => {
-    cart.classList.toggle('cart-items')
-    
-  });
-
-
- const searchBtn = document.querySelector('.searching')
-  const search = document.querySelector('search')
-
-  searchBtn.addEventListener('click', () => {
-    search.classList.toggle('input')
-  });
-
-  const logBtn = document.querySelector('.Login-link')
-    const login = document.querySelector('login')
-
-    logBtn.addEventListener('click', () => {
-      login.classList.toggle('logging')
-      
-    });
-  
+}
+if(cancel){
+ cancel.addEventListener("click",()=> {
+  nav.classList.remove('active');
+ });
+}
